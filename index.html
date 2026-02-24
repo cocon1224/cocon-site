@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>cocon.｜最後まで笑顔で過ごせる街づくり</title>
+  <meta name="description" content="cocon.は、認知症になっても働ける・孤立しない街を目指し、セミナー、地域連携、イベントなどを通じて社会実装を行うプロジェクトです。" />
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --card:#11131a;
+      --muted:#aab0bf;
+      --text:#f3f4f6;
+      --brand:#7dd3fc;
+      --brand2:#a78bfa;
+      --line:#232634;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1080px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Segoe UI", Arial;
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(125,211,252,.18), transparent 55%),
+                  radial-gradient(1200px 800px at 90% 0%, rgba(167,139,250,.18), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background: rgba(11,12,16,.75);
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(35,38,52,.7);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center; text-decoration:none;
+      font-weight:800; letter-spacing:.3px;
+    }
+    .dot{
+      width:12px; height:12px; border-radius:999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 0 6px rgba(125,211,252,.12);
+    }
+    .menu{
+      display:flex; gap:14px; flex-wrap:wrap;
+      font-size:14px; color:var(--muted);
+    }
+    .menu a{ text-decoration:none; padding:6px 10px; border-radius:999px; }
+    .menu a:hover{ background: rgba(255,255,255,.06); color:var(--text); }
+    .hero{ padding:56px 0 18px; }
+    .hero-grid{
+      display:grid; gap:18px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items:stretch;
+    }
+    @media (max-width: 880px){ .hero-grid{grid-template-columns:1fr} }
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(35,38,52,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:26px;
+      overflow:hidden;
+      position:relative;
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      border:1px solid rgba(125,211,252,.25);
+      background: rgba(125,211,252,.07);
+      color: #d9f2ff;
+      padding:7px 12px; border-radius:999px;
+      font-size:13px;
+    }
+    h1{margin:14px 0 10px; font-size:38px; line-height:1.2}
+    @media (max-width: 520px){ h1{font-size:30px} }
+    .lead{color:var(--muted); font-size:16px; margin:0 0 18px}
+    .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px; border-radius:14px;
+      text-decoration:none; font-weight:700; font-size:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(125,211,252,.25), rgba(167,139,250,.25));
+      border-color: rgba(125,211,252,.35);
+    }
+    .btn:hover{transform: translateY(-1px); transition:.15s}
+    .stats{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:10px; margin-top:18px;
+    }
+    @media (max-width: 520px){ .stats{grid-template-columns:1fr} }
+    .stat{
+      background: rgba(17,19,26,.7);
+      border:1px solid rgba(35,38,52,.8);
+      border-radius: 16px;
+      padding:12px 12px;
+    }
+    .stat b{display:block; font-size:18px}
+    .stat span{color:var(--muted); font-size:12px}
+    .side{ display:flex; flex-direction:column; gap:12px; }
+    .mini{
+      background: rgba(17,19,26,.85);
+      border:1px solid rgba(35,38,52,.8);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .mini h3{margin:0 0 6px; font-size:14px}
+    .mini p{margin:0; color:var(--muted); font-size:13px}
+    section{padding:34px 0}
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between;
+      gap:12px; margin-bottom:14px;
+    }
+    .section-title h2{margin:0; font-size:22px}
+    .section-title p{margin:0; color:var(--muted); font-size:13px}
+    .grid{
+      display:grid; gap:12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 880px){ .grid{grid-template-columns:1fr} }
+    .card{
+      background: rgba(17,19,26,.85);
+      border:1px solid rgba(35,38,52,.85);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    }
+    .card h3{margin:0 0 6px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:13px}
+    .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      font-size:12px; color:#dbeafe;
+      border:1px solid rgba(125,211,252,.22);
+      background: rgba(125,211,252,.08);
+      padding:6px 10px; border-radius:999px;
+    }
+    .two{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr 1fr;
+      align-items:start;
+    }
+    @media (max-width: 880px){ .two{grid-template-columns:1fr} }
+    .faq details{
+      border:1px solid rgba(35,38,52,.85);
+      background: rgba(17,19,26,.85);
+      border-radius: 16px;
+      padding:12px 14px;
+      margin-bottom:10px;
+    }
+    .faq summary{ cursor:pointer; font-weight:700; }
+    .faq p{color:var(--muted); margin:8px 0 0}
+    .footer{
+      padding:26px 0 46px;
+      border-top:1px solid rgba(35,38,52,.85);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .smalllinks{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="cocon. home">
+        <span class="dot"></span><span>cocon.</span>
+      </a>
+      <nav class="menu" aria-label="site menu">
+        <a href="#about">cocon.とは</a>
+        <a href="#projects">活動</a>
+        <a href="#seminar">セミナー</a>
+        <a href="#consult">相談</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="pill">最後まで笑顔で過ごせる街づくり｜cocon.</div>
+          <h1>認知症になっても、<br>働ける・孤立しない社会へ。</h1>
+          <p class="lead">
+            cocon.は、学び（セミナー）と実践（地域イベント・しごとづくり）をつなぎ、
+            家族だけに負担が偏らない仕組みを、街の中で育てていくプロジェクトです。
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#contact">相談・依頼をする</a>
+            <a class="btn" href="#seminar">セミナーを見る</a>
+            <a class="btn" href="#projects">活動内容を見る</a>
+          </div>
+          <div class="stats" aria-label="highlights">
+            <div class="stat"><b>学び×実践</b><span>セミナーと現場を往復</span></div>
+            <div class="stat"><b>地域連携</b><span>企業・大学・店舗と協働</span></div>
+            <div class="stat"><b>当事者視点</b><span>「できる」を増やす設計</span></div>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="mini">
+            <h3>最新のお知らせ（例）</h3>
+            <p>ここに直近の開催情報や募集情報を入れます。</p>
+          </div>
+          <div class="mini">
+            <h3>活動エリア</h3>
+            <p>名古屋を中心に、地域・企業・学校と連携して取り組みます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <div class="section-title">
+        <h2>cocon.とは</h2>
+        <p>想いを、地域の仕組みに。</p>
+      </div>
+      <div class="two">
+        <div class="card">
+          <h3>ミッション</h3>
+          <p>
+            認知症になっても「役割」と「つながり」を持ち続けられる街へ。
+            当事者・家族・地域・企業が一緒に支え合える仕組みを、学びと実践でつくります。
+          </p>
+          <div class="tagrow">
+            <span class="tag">社会参加</span>
+            <span class="tag">予防・啓発</span>
+            <span class="tag">地域連携</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>cocon.が大事にしていること</h3>
+          <p>
+            「できない」ではなく「できる」を増やす設計。
+            ひとりの困りごとを、みんなの仕組みに変えていくこと。
+          </p>
+          <div class="tagrow">
+            <span class="tag">当事者視点</span>
+            <span class="tag">やさしいデザイン</span>
+            <span class="tag">継続できる運用</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>活動・事業</h2>
+        <p>相談・依頼に繋がる入口を整理しています。</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>認知症リスク対策セミナー</h3>
+          <p>50代からの未来設計。物忘れと認知症の違い、生活習慣、家族の不安に向き合う実践的内容。</p>
+          <div class="tagrow"><span class="tag">一般向け</span><span class="tag">企業研修</span><span class="tag">講演</span></div>
+        </div>
+
+        <div class="card">
+          <h3>注文をまちがえるCaféRest</h3>
+          <p>認知症の方がフロアスタッフとして働くイベント型レストラン。体験を通じて理解を広げます。</p>
+          <div class="tagrow"><span class="tag">啓発イベント</span><span class="tag">地域連携</span><span class="tag">取材歓迎</span></div>
+        </div>
+
+        <div class="card">
+          <h3>昭和喫茶・コミュニティ</h3>
+          <p>子育て中の女性が参加できるワークショップや、地域の居場所づくり。世代を越えてつながる場。</p>
+          <div class="tagrow"><span class="tag">居場所</span><span class="tag">ワークショップ</span><span class="tag">地域</span></div>
+        </div>
+
+        <div class="card">
+          <h3>健康弁当（無添加・発酵調味料）</h3>
+          <p>国際中薬膳師監修。7種の野菜と発酵調味料を使った手作り弁当で、忙しい世代の健康を支えます。</p>
+          <div class="tagrow"><span class="tag">企業向け</span><span class="tag">個人向け</span><span class="tag">健康</span></div>
+        </div>
+
+        <div class="card">
+          <h3>非保険の生活サポート</h3>
+          <p>通院付き添い・見守りなど、制度の隙間に寄り添う支援。安心できる暮らしの選択肢を増やします。</p>
+          <div class="tagrow"><span class="tag">生活支援</span><span class="tag">相談</span><span class="tag">家族支援</span></div>
+        </div>
+
+        <div class="card">
+          <h3>動画・印刷物制作</h3>
+          <p>施設や学校向けの紹介動画、卒業記念品などの制作。活動の可視化と広報を支援します。</p>
+          <div class="tagrow"><span class="tag">動画</span><span class="tag">印刷</span><span class="tag">広報</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="seminar">
+      <div class="section-title">
+        <h2>セミナー</h2>
+        <p>直近開催・過去実績をまとめます。</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <h3>次回開催（例）</h3>
+          <p>
+            認知症リスク対策セミナー（50代からの未来設計）<br>
+            テーマ：「50代からの不安を安心に変える」<br>
+            会場：名古屋市南区・喫茶スーズ焙煎所（無添加ランチ付き）<br>
+            参加費：2,500円
+          </p>
+          <div class="tagrow"><span class="tag">名古屋</span><span class="tag">ランチ付き</span><span class="tag">要予約</span></div>
+        </div>
+
+        <div class="card">
+          <h3>企業・団体向け</h3>
+          <p>
+            介護離職対策、認知症への理解促進、家族のサポート設計など、
+            企業の福利厚生・研修としてカスタマイズ可能です。
+          </p>
+          <div class="tagrow"><span class="tag">研修</span><span class="tag">講演</span><span class="tag">ワークショップ</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="consult">
+      <div class="section-title">
+        <h2>相談できること</h2>
+        <p>「何から相談したらいい？」も歓迎です。</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>講演・セミナー依頼</h3>
+          <p>認知症の基礎、予防、家族の関わり、当事者の社会参加など、目的に合わせて設計します。</p>
+          <div class="tagrow"><span class="tag">企業</span><span class="tag">地域</span><span class="tag">学校</span></div>
+        </div>
+        <div class="card">
+          <h3>イベント企画・連携</h3>
+          <p>注文をまちがえるCaféRestなど、体験を通じた啓発・理解促進イベントをご一緒できます。</p>
+          <div class="tagrow"><span class="tag">共催</span><span class="tag">協賛</span><span class="tag">取材</span></div>
+        </div>
+        <div class="card">
+          <h3>個別相談</h3>
+          <p>「親の物忘れが気になる」「将来が不安」など、安心に変えるための整理と次の一歩を一緒に考えます。</p>
+          <div class="tagrow"><span class="tag">家族</span><span class="tag">生活</span><span class="tag">不安整理</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="section-title">
+        <h2>よくある質問</h2>
+        <p>まずはここからでもOKです。</p>
+      </div>
+
+      <details>
+        <summary>相談だけでも大丈夫ですか？</summary>
+        <p>大丈夫です。状況整理だけでも歓迎です。必要に応じて次の選択肢をご提案します。</p>
+      </details>
+      <details>
+        <summary>企業研修はどんな形式ですか？</summary>
+        <p>講演／ワークショップ／事前アンケートを含む設計など柔軟に対応します。オンラインも可能です。</p>
+      </details>
+      <details>
+        <summary>料金はどのくらいですか？</summary>
+        <p>内容・時間・準備物により異なります。「目的」と「想定参加人数」を添えてお問い合わせください。</p>
+      </details>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>お問い合わせ</h2>
+        <p>フォーム or メールどちらでもOKです。</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <h3>まずは気軽にご連絡ください</h3>
+          <p>
+            ・セミナー／講演依頼<br>
+            ・企業研修（福利厚生、介護離職対策等）<br>
+            ・イベント共催／協賛／取材<br>
+            ・個別相談
+          </p>
+          <div class="tagrow"><span class="tag">24時間受付</span><span class="tag">要返信</span><span class="tag">秘密厳守</span></div>
+        </div>
+
+        <div class="card">
+          <h3>連絡先（ここを書き換え）</h3>
+          <p>
+            ▼Googleフォーム（おすすめ）<br>
+            <a href="https://example.com" target="_blank" rel="noopener">フォームURLをここに貼る</a><br><br>
+            ▼メール<br>
+            <a href="mailto:example@cocon.jp">example@cocon.jp</a>
+          </p>
+          <p style="margin-top:10px; color:var(--muted); font-size:12px;">
+            ※公開前に、フォームURLとメールアドレスを必ずあなたのものに変更してください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div><b style="color:var(--text)">cocon.</b>｜最後まで笑顔で過ごせる街づくり</div>
+        <div class="smalllinks">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="X">X</a>
+        </div>
+        <div style="margin-top:10px;">© <span id="y"></span> cocon. All rights reserved.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
